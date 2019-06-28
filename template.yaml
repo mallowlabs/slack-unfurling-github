@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    slack-unfurling-github
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 30
+
+Parameters:
+    GitHubPersonalAccessToken:
+        Type: String
+        Default: your-token
+    SlackOauthAccessToken:
+        Type: String
+        Default: your-slack-oauth-token
+
+Resources:
+
+    SlackUnfrulingGitHubFunction:
+        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        Properties:
+            CodeUri: slack-unfurling-github/
+            Handler: app.lambda_handler
+            Runtime: ruby2.5
+            Environment:
+                Variables:
+                    GITHUB_PERSONAL_ACCESS_TOKEN: !Ref GitHubPersonalAccessToken
+                    SLACK_OAUTH_ACCESS_TOKEN: !Ref SlackOauthAccessToken
+            MemorySize: 128
+            Events:
+                SlackUnfrulingGitHub:
+                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                    Properties:
+                        Path: /call
+                        Method: post
+
+Outputs:
+
+    SlackUnfrulingGitHubApi:
+      Description: "API Gateway endpoint URL for Prod stage for Slack Unfurling GitHub function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/call/"
+
+    SlackUnfrulingGitHubFunction:
+      Description: "Slack Unfurling GitHub Lambda Function ARN"
+      Value: !GetAtt SlackUnfrulingGitHubFunction.Arn
+
+    SlackUnfrulingGitHubFunctionIamRole:
+      Description: "Implicit IAM Role created for Slack Unfurling GitHub function"
+      Value: !GetAtt SlackUnfrulingGitHubFunctionRole.Arn
