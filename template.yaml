@@ -22,7 +22,7 @@ Resources:
         Properties:
             CodeUri: slack-unfurling-github/
             Handler: app.lambda_handler
-            Runtime: ruby2.5
+            Runtime: ruby2.7
             Environment:
                 Variables:
                     GITHUB_PERSONAL_ACCESS_TOKEN: !Ref GitHubPersonalAccessToken
