@@ -16,7 +16,7 @@ GEM
     hashdiff (1.1.1)
     json (2.7.2)
     logger (1.6.1)
-    minitest (5.25.1)
+    minitest (5.25.2)
     minitest-stub_any_instance (1.0.3)
     net-http (0.4.1)
       uri
