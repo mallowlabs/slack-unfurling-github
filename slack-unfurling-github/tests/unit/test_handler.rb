@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
+require 'minitest/mock'
 require 'webmock/minitest'
 
 require_relative '../../app.rb'

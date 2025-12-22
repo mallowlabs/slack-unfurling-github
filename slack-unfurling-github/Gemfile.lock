@@ -18,6 +18,7 @@ GEM
     logger (1.7.0)
     minitest (6.0.0)
       prism (~> 1.5)
+    minitest-mock (5.27.0)
     net-http (0.6.0)
       uri
     octokit (10.0.0)
@@ -40,6 +41,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
+  minitest-mock
   octokit
   webmock
 
