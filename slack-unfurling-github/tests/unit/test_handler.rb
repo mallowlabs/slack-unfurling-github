@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require 'minitest/stub_any_instance'
 require 'webmock/minitest'
 
 require_relative '../../app.rb'
@@ -35,8 +34,11 @@ class AppTest < Minitest::Test
 
     expected_result = { statusCode: 200, body: JSON.generate(challenge: 'example') }
 
-    GitHubClient.stub_any_instance(:'enabled?', true) do
-      assert_equal(expected_result, lambda_handler(event: e, context: ''))
+    github_client = GitHubClient.new
+    github_client.stub :enabled?, true do
+      GitHubClient.stub :new, github_client do
+        assert_equal(expected_result, lambda_handler(event: e, context: ''))
+      end
     end
   end
 
@@ -98,8 +100,11 @@ class AppTest < Minitest::Test
 
     expected_result = { statusCode: 200, body: JSON.generate(ok: true) }
 
-    GitHubClient.stub_any_instance(:'enabled?', true) do
-      assert_equal(expected_result, lambda_handler(event: e, context: ''))
+    github_client = GitHubClient.new
+    github_client.stub :enabled?, true do
+      GitHubClient.stub :new, github_client do
+        assert_equal(expected_result, lambda_handler(event: e, context: ''))
+      end
     end
   end
 end
