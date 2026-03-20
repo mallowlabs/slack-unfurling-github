@@ -15,7 +15,7 @@ GEM
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
     hashdiff (1.2.1)
-    json (2.18.1)
+    json (2.19.2)
     logger (1.7.0)
     minitest (6.0.2)
       drb (~> 2.0)
