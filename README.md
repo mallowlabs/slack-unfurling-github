@@ -42,7 +42,7 @@ $ aws s3 mb s3://your-sandbox --region ap-northeast-1
 
 ```bash
 $ cd slack-unfurling-github
-$ bundle install --path vendor/bundle --without test
+$ BUNDLE_PATH=vendor/bundle BUNDLE_WITHOUT=test bundle install
 ```
 
 ```bash
