@@ -13,7 +13,5 @@ jobs:
         with:
           bundler-cache: true
           working-directory: ./slack-unfurling-github
-      - run: bundle install --jobs 4 --retry 3 --path vendor/bundle
-        working-directory: ./slack-unfurling-github
       - run: bundle exec ruby tests/unit/test_handler.rb
         working-directory: ./slack-unfurling-github
