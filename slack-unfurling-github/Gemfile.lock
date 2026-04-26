@@ -17,7 +17,7 @@ GEM
     hashdiff (1.2.1)
     json (2.19.2)
     logger (1.7.0)
-    minitest (6.0.4)
+    minitest (6.0.5)
       drb (~> 2.0)
       prism (~> 1.5)
     minitest-mock (5.27.0)
