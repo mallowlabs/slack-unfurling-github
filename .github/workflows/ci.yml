@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.319.0
         with:
           bundler-cache: true
           working-directory: ./slack-unfurling-github
